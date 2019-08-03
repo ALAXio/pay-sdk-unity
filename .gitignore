@@ -1,0 +1,7 @@
+# Don't track content of these folders
+Logs/
+Temp/
+Library/cache
+Library/PackageCache
+Library/ShaderCache
+Library/StateCache
