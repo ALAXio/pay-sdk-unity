@@ -1,3 +1,5 @@
+This repo contains a work in progress, we're working hard to release v. 1.0 in the next days to come.
+
 # ALAX Pay SDK for Unity #
 
 Coming soon to Unity Asset Store as a free asset!
