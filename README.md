@@ -57,14 +57,7 @@ The SDK is published as a public repository on github, as well as a free asset i
 ### Using the ALAX Pay SDK ###
 
 #### Initialization ####
-Before any of the SDK methods can be used, the SDK service needs to be registered with the operating system using the statement:
-```
-	AlaxPay.init()
-```
-
-This need only be done once during the duration of the application, and must be done before calling any other SDK methods.
-
-See `fun onCreate()` in the provided example application for context.
+Performed automatically once the Start() method is called.
 
 #### Available Methods ####
 ALAX Pay SDK for Unity provides a script called AlaxIAPManager.cs. Create an empty object on a scene and add this script to it. The script provides it's own inapps related fields into the Editor's inspector. These fields are used to set up the IAP Manager.   
