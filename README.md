@@ -49,7 +49,7 @@ Start the ALAX Pay Wallet application.
 Selecting `Top Up`, as above, will display the Wallet Address / Account Name which, as before, can then be copied to the clipboard using the supplied icon.
 
 #### ALAX Pay for Unity SDK ####
-The SDK is published as a public repository on github, as well as a free asset is coming soon to Unity Asset Store. In order to integ
+The SDK is published as a public repository on github, as well as a free asset is coming soon to Unity Asset Store. In order to integrate it into the app please use .Asset file.
 
 #### ALAX Pay Example Application ####
 
