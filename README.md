@@ -1,4 +1,6 @@
-This repo contains a work in progress, we're working hard to release v. 1.0 in the next days to come.
+This repo contains a work in progress, we're working hard to release v. 1.0 in the next days to come. 
+
+Expected stable realese date: September 25th, 2019.
 
 # ALAX Pay SDK for Unity #
 
