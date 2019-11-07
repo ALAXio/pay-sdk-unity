@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+
+using UnityEngine;
 
 /// <summary>
 /// Statuses for InApp Purchase
@@ -41,3 +44,11 @@ public class ModelIAP
     /// </summary>
     public string PurchasedAt; // { get; set; }
 }
+
+[System.Serializable]
+class TransactionConfirmation 
+{
+
+}
+
+

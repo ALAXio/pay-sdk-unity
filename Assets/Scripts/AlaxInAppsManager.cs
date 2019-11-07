@@ -16,7 +16,8 @@ public class AlaxInAppsManager : MonoBehaviour
     private const string _PRICE = "_price";
 
     private ALAXPayWrapper _alaxGateway;
-    private ModelIAP _currentInApp;
+    private ModelIAP
+        _currentInApp;
 
     /// <summary>
     /// A mandatory, if empty that means that the app has no inapps
@@ -54,7 +55,7 @@ public class AlaxInAppsManager : MonoBehaviour
     /// The class constructor. 
     /// Required by singleton (to be used outside Unity, i.e. Xamarin.Android)
     /// </summary>
-    AlaxInAppsManager() 
+    public AlaxInAppsManager() 
     {
         if (InApps == null)
             InApps = new List<ModelIAP>();
@@ -176,30 +177,26 @@ public class AlaxInAppsManager : MonoBehaviour
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
-    /// 
-    public bool StartPurchaseScenario(string key) {
+    public void StartPurchaseScenario(string key) {
         var inapp = GetInAppForKey(key);
 
-        Debug.Log("Trying to purchase item with key: " + key);
+        if (inapp == null)
+            return;
 
         if (inapp.Status == PurchaseStatus.Purchased || inapp.Status == PurchaseStatus.Restored)
-            return false;
+            return;
 
         _currentInApp = inapp;
 
-        _alaxGateway = new ALAXPayWrapper("io.alax.sdk.pay.$AlaxPay");
-        _alaxGateway.ActivityReturnedResult += AlpGateway_ActivityReturnedResult;
+        _alaxGateway = new ALAXPayWrapper(); // ("io.alax.sdk.pay.AlaxPay");
+        _alaxGateway.Init();
+        //_alaxGateway.ActivityReturnedResult += AlpGateway_ActivityReturnedResult;
         _alaxGateway.UIRequestTransferActivity(PublisherId, inapp.Price, XApiKey);
 
-        return false;
+        return;
     }
 
-    //public void method for Unity inspector
-    public void _StartPurchaseScenario(string key) { 
-        StartPurchaseScenario(key);
 
-        ButtonSpriteManager.lastTappedButton.ChangeButtonState(1); //Change button state to "Processing"
-    }
 
     private void AlpGateway_ActivityReturnedResult(object sender, EventArgs e) 
     {
@@ -214,9 +211,6 @@ public class AlaxInAppsManager : MonoBehaviour
         PlayerPrefs.SetString(transactionKey, _currentInApp.TransactionId);
         PlayerPrefs.SetString(dateKey, _currentInApp.PurchasedAt);
         PlayerPrefs.SetString(priceKey, _currentInApp.Price.ToString());
-        PlayerPrefs.Save();
-
-        ButtonSpriteManager.lastTappedButton.ChangeButtonState(2); //Change button state to "Purchased"
     }
 
     public void Start() 
